@@ -9,22 +9,55 @@
     <script src= "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script> 
 	
   </head>
-  <body>
+  <body class="text-white" style="background-color:rgb(26, 23, 27);">
     <div class="container">
     <main>
-<div class="container">
-		<div class="d-flex p-2 justify-content-center"><a href="#"><img src="./banner.png" width="600px"></img></a></div>
-			
-			<div class="d-flex p-2 justify-content-center">
-			<video name="myiFrame" height="400px" width="600px" controls allowfullscreen>
-			<source id = "videoSource" src="https://cdn.pixabay.com/video/2020/06/17/42318-431511222_large.mp4" type="video/mp4">
-	</video>
-			</div>
-	</div>
-
+		<div class="container min-vh-100 d-flex justify-content-center align-items-center">
+			<form class="p-5 align-middle rounded needs-validation" style="background-color:rgb(34, 31, 35);" id="form" method="GET" action="./video/index.html" novalidate>
+			  <input type="hidden" name="source" id="source" value=""/>
+			  <p class="m-4 text-center ">Эта ссылка защищена паролем</p>
+			  <div class="mb-3">
+				<input type="password" class="form-control" id="password" placeholder="Пароль">
+				<div class="invalid-feedback">
+				  Пароль неверный
+				</div>
+			  </div>
+			  <div class="mb-3 text-center">
+				<button type="submit" id="submit" class="btn text-white" style="background-color:rgb(232, 0, 4);">Перейти</button>
+			  </div>
+			</form>	
+		</div>
+		</div>
     </main>
     </div>
 	<script>
+		// Example starter JavaScript for disabling form submissions if there are invalid fields
+		(function () {
+		  'use strict'
+
+		  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+		  var forms = document.querySelectorAll('.needs-validation')
+
+		  // Loop over them and prevent submission
+		  Array.prototype.slice.call(forms)
+			.forEach(function (form) {
+			  form.addEventListener('submit', function (event) {
+				var pass_valid = "1234"; // потом скроем этот пароль, сделаем хеш
+				if ($("#password").val() != pass_valid ) {
+				  console.log("1111")
+				  form.classList.remove('was-validated');
+				  $("#password").addClass("border-danger");
+				  $(".invalid-feedback").show();
+				  event.preventDefault();
+				  event.stopPropagation();
+				} else {
+					form.classList.add('was-validated');
+				}
+			  }, false)
+			})
+		})()
+	
+	
 		var getUrlParameter = function getUrlParameter(sParam) {
 		var sPageURL = window.location.search.substring(1),
         sURLVariables = sPageURL.split('&'),
@@ -42,22 +75,10 @@
 	};
 	
 	var source = getUrlParameter('source');
-	
-	console.log(source);
-	
-	var url = "";
 	if (source) {
-		url = source;
-		// https://cdn.pixabay.com/video/2020/07/06/43964-437894390_large.mp4
-		// https://cdn.pixabay.com/video/2020/06/20/42679-432102847_large.mp4
-	} else {
-		url = "https://cdn.pixabay.com/video/2020/06/17/42318-431511222_large.mp4";
+		$("#source").val(source);
 	}
 	
-	console.log(url);
-	
-	$("#videoSource").attr('src', url);
-
 	</script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/19402aaa68.js" crossorigin="anonymous"></script>
