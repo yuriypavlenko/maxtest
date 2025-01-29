@@ -21,7 +21,7 @@
 				<div class="row justify-content-center">
 					<div class="col-lg-6 text-center">
 						<video class="w-100" name="myiFrame" controls allowfullscreen>
-							<source id = "videoSource" src="https://cdn.pixabay.com/video/2020/06/17/42318-431511222_large.mp4" type="video/mp4">
+							<source id = "videoSource" src="https://cdn.pixabay.com/video/2020/06/17/42318-431511222_large.mp4#t=1" type="video/mp4">
 						</video>
 					</div>
 				</div>
@@ -57,6 +57,8 @@
 	} else {
 		url = "https://cdn.pixabay.com/video/2020/06/17/42318-431511222_large.mp4";
 	}
+	
+	url = url + "#t=1";
 	
 	console.log(url);
 	
